@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8081:80"
+    networks:
+      - rede-biosonds
+
+  banco:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: senha123
+    networks:
+      - rede-biosonds
+
+networks:
+  rede-biosonds:
+    driver: bridge
